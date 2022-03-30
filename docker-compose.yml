@@ -1,0 +1,19 @@
+version: '3.5' 
+services:
+  codesrv: 
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codeide
+    restart: always
+#    network_mode: host
+    ports:
+      - 6501:6501
+    environment:
+      - VSCODEPASSW: "password"
+    volumes:
+      - ..:/var/www
+      - ./share:/root/.local/share
+      - .:/root/.config/code-server
+      - /var/run/docker.sock:/var/run/docker.sock
+
